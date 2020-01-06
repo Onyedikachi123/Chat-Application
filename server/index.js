@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
     // Add the user to the room if no error
     socket.join(user.room);
 
-    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)})
+    //io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
 
     callback();
   });
