@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
     // Add the user to the room if no error
     socket.join(user.room);
 
-    //io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
+    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
 
     callback();
   });
@@ -37,6 +37,7 @@ io.on('connection', (socket) => {
      const user = getUser(socket.id); // Getting the user that sent message by id
 
      io.to(user.room).emit('message', { user: user.name, text: message});
+     io.to(user.room).emit('roomData', { room: user.room, text: message});
 
      callback();
   });
