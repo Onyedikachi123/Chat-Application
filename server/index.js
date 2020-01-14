@@ -4,7 +4,7 @@ const http = require('http');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js');
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
 const router = require('./router');
 
@@ -15,7 +15,8 @@ const io = socketio(server);
 // When a user connect and when a user leaves using "connection/disconnect function"
 io.on('connection', (socket) => {
   socket.on('join', ({ name, room}, callback) => {
-    const { error, user } = addUser({ id: socket.id, name, room });
+    // console.log('First occurence r: ', name)
+    const { error, user } = addUser({ id: socket.id, name: name, room: room });
 
     // callback error handling(dont add user if error)
     if(error) return callback(error);

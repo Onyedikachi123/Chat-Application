@@ -4,9 +4,10 @@ const users = [];
 const addUser = ({id, name, room}) => {
 // removing all spaces and putting it to lowercase(change to ur taste later)
 
+//console.log('name 123: ', name)
+
 name = name.trim().toLowerCase();
 room = room.trim().toLowerCase();
-
 
 const existingUser = users.find((user) => user.room === room && user.name === name); // checking if there a user with the same name as the new user
 
@@ -22,7 +23,7 @@ const user = { id, name, room };
 
 users.push(user);
 
-return { user };
+return { user }
 
 }
 
